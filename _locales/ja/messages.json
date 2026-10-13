@@ -1,0 +1,274 @@
+{
+   "badgeNew": {
+      "message": "新規"
+   },
+   "btnClearCookies": {
+      "message": "🗑️ Cookieをクリア"
+   },
+   "btnDeleteBackup": {
+      "message": "バックアップ削除"
+   },
+   "btnDeleteCloudBackup": {
+      "message": "クラウドバックアップを削除"
+   },
+   "btnDriveRestore": {
+      "message": "Drive 復元"
+   },
+   "btnDriveSignIn": {
+      "message": "Driveでサインイン"
+   },
+   "btnExportAll": {
+      "message": "すべてエクスポート"
+   },
+   "btnExportCookies": {
+      "message": "📥 Cookieをエクスポート"
+   },
+   "btnExportSelected": {
+      "message": "選択項目をエクスポート"
+   },
+   "btnImport": {
+      "message": "インポート"
+   },
+   "btnImportCookies": {
+      "message": "📤 Cookieをインポート"
+   },
+   "btnSave": {
+      "message": "保存"
+   },
+   "btnSyncNow": {
+      "message": "今すぐ同期"
+   },
+   "confirmDeleteAllBody": {
+      "message": "本当にこのドメインのすべてのプロファイルを削除しますか？この操作は元に戻せません。"
+   },
+   "confirmDeleteAllProfiles": {
+      "message": "$DOMAIN$ のすべてのプロファイルを削除してもよろしいですか？",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteAllProfilesTitle": {
+      "message": "すべてのプロファイルを削除しますか？"
+   },
+   "confirmDeleteAllTitle": {
+      "message": "$domain$ のすべてを削除することを確認しますか？",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteBody": {
+      "message": "本当にプロファイル「$profile$」を削除しますか？この操作は元に戻せません。",
+      "placeholders": {
+         "profile": {
+            "content": "$1",
+            "example": "私のプロファイル"
+         }
+      }
+   },
+   "confirmDeleteCloudBackup": {
+      "message": "クラウドバックアップフォルダとすべてのデータを完全に削除してもよろしいですか？この操作は元に戻せません。"
+   },
+   "confirmDeleteCloudBackupTitle": {
+      "message": "クラウドバックアップを削除しますか？"
+   },
+   "confirmDeleteProfileBody": {
+      "message": "本当にプロファイル「$PROFILE$」を削除しますか？この操作は元に戻せません。",
+      "placeholders": {
+         "profile": {
+            "content": "$1"
+         }
+      }
+   },
+   "confirmDeleteProfileTitle": {
+      "message": "プロファイルを削除しますか？"
+   },
+   "confirmDeleteTitle": {
+      "message": "削除の確認"
+   },
+   "donateBtn": {
+      "message": "❤️ 寄付"
+   },
+   "emptyStateDomain": {
+      "message": "\u003Cstrong>$DOMAIN$\u003C/strong> のプロファイルが見つかりません。\u003Cbr>このウェブサイトのプロファイルを作成することから始めましょう。",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "emptyStateGeneral": {
+      "message": "プロファイルが見つかりません。\u003Cbr>訪問するウェブサイトのプロファイルを作成することから始めましょう。"
+   },
+   "errorClearingCookies": {
+      "message": "Cookieのクリアエラー"
+   },
+   "errorDeletingCloudBackup": {
+      "message": "クラウドバックアップの削除に失敗しました"
+   },
+   "errorExportingCookies": {
+      "message": "Cookieのエクスポートエラー"
+   },
+   "errorExportingProfiles": {
+      "message": "プロファイルのエクスポートエラー"
+   },
+   "errorImportingCookies": {
+      "message": "Cookieのインポートエラー"
+   },
+   "errorImportingProfiles": {
+      "message": "プロファイルのインポートエラー：無効なファイル形式"
+   },
+   "errorLoadingProfile": {
+      "message": "プロファイルの読み込みエラー：$ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "No cookies found"
+         }
+      }
+   },
+   "errorLoadingProfiles": {
+      "message": "プロファイルの読み込みエラー"
+   },
+   "errorSavingProfile": {
+      "message": "プロファイルの保存エラー"
+   },
+   "extDesc": {
+      "message": "お気に入りのウェブサイトの高度なプロファイル管理"
+   },
+   "extName": {
+      "message": "プロファイルマネージャープロ"
+   },
+   "firstProfileHelp": {
+      "message": "最初のプロファイルの名前を入力して保存をクリックしてください"
+   },
+   "labelDarkMode": {
+      "message": "ダークモード"
+   },
+   "labelShowWebsites": {
+      "message": "すべてのウェブサイトを表示"
+   },
+   "modalExportCancel": {
+      "message": "キャンセル"
+   },
+   "modalExportConfirm": {
+      "message": "選択項目をエクスポート"
+   },
+   "modalExportTitle": {
+      "message": "エクスポートするプロファイルを選択"
+   },
+   "noProfilesExport": {
+      "message": "エクスポート可能なプロファイルがありません。"
+   },
+   "noProfilesYet": {
+      "message": "まだプロファイルがありません。\u003Cbr>上に名前を入力して作成してください。"
+   },
+   "notificationAllProfilesDeleted": {
+      "message": "$DOMAIN$ のすべてのプロファイルが正常に削除されました！",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "notificationAllProfilesExported": {
+      "message": "すべてのプロファイルが正常にエクスポートされました！"
+   },
+   "notificationCloudBackupDeleted": {
+      "message": "クラウドバックアップフォルダとすべてのデータが正常に削除されました"
+   },
+   "notificationCookiesCleared": {
+      "message": "現在のセッションCookieが正常にクリアされました！"
+   },
+   "notificationCookiesExported": {
+      "message": "現在のセッションCookieが正常にエクスポートされました！"
+   },
+   "notificationCookiesImported": {
+      "message": "Cookieが正常にインポートされました！"
+   },
+   "notificationProfileDeleted": {
+      "message": "プロファイルが正常に削除されました！"
+   },
+   "notificationProfileFavorited": {
+      "message": "プロファイルをお気に入りに追加しました"
+   },
+   "notificationProfileLoaded": {
+      "message": "プロファイルが正常に読み込まれました！"
+   },
+   "notificationProfileSaved": {
+      "message": "プロファイルが正常に保存されました！"
+   },
+   "notificationProfileUnfavorited": {
+      "message": "プロファイルをお気に入りから削除しました"
+   },
+   "notificationProfilesImported": {
+      "message": "プロファイルが正常にインポートされました！"
+   },
+   "notificationSelectedProfilesExported": {
+      "message": "選択されたプロファイルが正常にエクスポートされました！"
+   },
+   "notificationWebsiteProfilesExported": {
+      "message": "$DOMAIN$ のプロファイルが正常にエクスポートされました！",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "profileNamePlaceholder": {
+      "message": "プロファイル名を入力"
+   },
+   "ratingBody": {
+      "message": "この拡張機能が役に立つと思われましたら、Chrome ウェブストアで5つ星の評価をお願いします。他の人がこの拡張機能を見つけるのにも役立ちます！"
+   },
+   "ratingBtn": {
+      "message": "⭐ 評価"
+   },
+   "ratingMaybeLater": {
+      "message": "後で"
+   },
+   "ratingNow": {
+      "message": "今すぐ評価"
+   },
+   "ratingTitle": {
+      "message": "プロファイルマネージャープロをお楽しみですか？"
+   },
+   "searchPlaceholder": {
+      "message": "ウェブサイトやプロファイルを検索..."
+   },
+   "titleBackupRestore": {
+      "message": "バックアップと復元"
+   },
+   "tooltipAddFavorite": {
+      "message": "お気に入りに追加"
+   },
+   "tooltipDeleteAll": {
+      "message": "すべてのプロファイルを削除"
+   },
+   "tooltipDeleteProfile": {
+      "message": "プロファイルを削除"
+   },
+   "tooltipExportWebsite": {
+      "message": "ウェブサイトプロファイルをエクスポート"
+   },
+   "tooltipLoadProfile": {
+      "message": "プロファイルを読み込む"
+   },
+   "tooltipRemoveFavorite": {
+      "message": "お気に入りから削除"
+   },
+   "warningEnterProfileName": {
+      "message": "プロファイル名を入力してください"
+   },
+   "warningSelectProfilesToExport": {
+      "message": "エクスポートするプロファイルを選択してください"
+   }
+}

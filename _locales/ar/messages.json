@@ -1,0 +1,274 @@
+{
+   "badgeNew": {
+      "message": "جديد"
+   },
+   "btnClearCookies": {
+      "message": "🗑️ مسح الكوكيز"
+   },
+   "btnDeleteBackup": {
+      "message": "حذف النسخة"
+   },
+   "btnDeleteCloudBackup": {
+      "message": "حذف النسخة الاحتياطية السحابية"
+   },
+   "btnDriveRestore": {
+      "message": "استعادة درايف"
+   },
+   "btnDriveSignIn": {
+      "message": "تسجيل الدخول باستخدام Drive"
+   },
+   "btnExportAll": {
+      "message": "تصدير الكل"
+   },
+   "btnExportCookies": {
+      "message": "📥 تصدير الكوكيز"
+   },
+   "btnExportSelected": {
+      "message": "تصدير المحدد"
+   },
+   "btnImport": {
+      "message": "استيراد"
+   },
+   "btnImportCookies": {
+      "message": "📤 استيراد الكوكيز"
+   },
+   "btnSave": {
+      "message": "حفظ"
+   },
+   "btnSyncNow": {
+      "message": "مزامنة الآن"
+   },
+   "confirmDeleteAllBody": {
+      "message": "هل أنت متأكد أنك تريد حذف جميع الملفات الشخصية لهذا النطاق؟ لا يمكن التراجع عن هذا الإجراء."
+   },
+   "confirmDeleteAllProfiles": {
+      "message": "هل أنت متأكد من أنك تريد حذف جميع الملفات الشخصية لـ $DOMAIN$؟",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteAllProfilesTitle": {
+      "message": "حذف جميع الملفات الشخصية؟"
+   },
+   "confirmDeleteAllTitle": {
+      "message": "تأكيد حذف الكل لـ $domain$؟",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteBody": {
+      "message": "هل أنت متأكد أنك تريد حذف الملف الشخصي '$profile$'؟ لا يمكن التراجع عن هذا الإجراء.",
+      "placeholders": {
+         "profile": {
+            "content": "$1",
+            "example": "ملفي الشخصي"
+         }
+      }
+   },
+   "confirmDeleteCloudBackup": {
+      "message": "هل أنت متأكد من أنك تريد حذف مجلد النسخة الاحتياطية السحابية وجميع بياناته بالكامل؟ لا يمكن التراجع عن هذا الإجراء."
+   },
+   "confirmDeleteCloudBackupTitle": {
+      "message": "حذف النسخة الاحتياطية السحابية؟"
+   },
+   "confirmDeleteProfileBody": {
+      "message": "هل أنت متأكد أنك تريد حذف الملف الشخصي '$PROFILE$؟' لا يمكن التراجع عن هذا الإجراء.",
+      "placeholders": {
+         "profile": {
+            "content": "$1"
+         }
+      }
+   },
+   "confirmDeleteProfileTitle": {
+      "message": "حذف الملف الشخصي؟"
+   },
+   "confirmDeleteTitle": {
+      "message": "تأكيد الحذف"
+   },
+   "donateBtn": {
+      "message": "❤️ تبرع"
+   },
+   "emptyStateDomain": {
+      "message": "لم يتم العثور على ملفات شخصية لـ \u003Cstrong>$DOMAIN$\u003C/strong>.\u003Cbr>ابدأ بإنشاء ملف شخصي لهذا الموقع.",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "emptyStateGeneral": {
+      "message": "لم يتم العثور على ملفات شخصية.\u003Cbr>ابدأ بإنشاء ملف شخصي للمواقع التي تزورها."
+   },
+   "errorClearingCookies": {
+      "message": "خطأ في مسح ملفات تعريف الارتباط"
+   },
+   "errorDeletingCloudBackup": {
+      "message": "فشل في حذف النسخة الاحتياطية السحابية"
+   },
+   "errorExportingCookies": {
+      "message": "خطأ في تصدير ملفات تعريف الارتباط"
+   },
+   "errorExportingProfiles": {
+      "message": "خطأ في تصدير الملفات الشخصية"
+   },
+   "errorImportingCookies": {
+      "message": "خطأ في استيراد ملفات تعريف الارتباط"
+   },
+   "errorImportingProfiles": {
+      "message": "خطأ في استيراد الملفات الشخصية: تنسيق ملف غير صالح"
+   },
+   "errorLoadingProfile": {
+      "message": "خطأ في تحميل الملف الشخصي: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "No cookies found"
+         }
+      }
+   },
+   "errorLoadingProfiles": {
+      "message": "خطأ في تحميل الملفات الشخصية"
+   },
+   "errorSavingProfile": {
+      "message": "خطأ في حفظ الملف الشخصي"
+   },
+   "extDesc": {
+      "message": "إدارة ملفات تعريف متعددة لمواقعك المفضلة بسهولة"
+   },
+   "extName": {
+      "message": "مدير الملفات الشخصية برو"
+   },
+   "firstProfileHelp": {
+      "message": "أدخل اسماً لملفك الشخصي الأول واضغط حفظ"
+   },
+   "labelDarkMode": {
+      "message": "الوضع الداكن"
+   },
+   "labelShowWebsites": {
+      "message": "عرض جميع المواقع"
+   },
+   "modalExportCancel": {
+      "message": "إلغاء"
+   },
+   "modalExportConfirm": {
+      "message": "تصدير المحدد"
+   },
+   "modalExportTitle": {
+      "message": "اختر الملفات الشخصية للتصدير"
+   },
+   "noProfilesExport": {
+      "message": "لا توجد ملفات شخصية متاحة للتصدير."
+   },
+   "noProfilesYet": {
+      "message": "لا توجد ملفات شخصية بعد.\u003Cbr>أنشئ واحداً بإدخال اسم أعلاه."
+   },
+   "notificationAllProfilesDeleted": {
+      "message": "تم حذف جميع الملفات الشخصية لـ $DOMAIN$ بنجاح!",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "notificationAllProfilesExported": {
+      "message": "تم تصدير جميع الملفات الشخصية بنجاح!"
+   },
+   "notificationCloudBackupDeleted": {
+      "message": "تم حذف مجلد النسخة الاحتياطية السحابية وجميع البيانات بنجاح"
+   },
+   "notificationCookiesCleared": {
+      "message": "تم مسح ملفات تعريف الارتباط للجلسة الحالية بنجاح!"
+   },
+   "notificationCookiesExported": {
+      "message": "تم تصدير ملفات تعريف الارتباط للجلسة الحالية بنجاح!"
+   },
+   "notificationCookiesImported": {
+      "message": "تم استيراد ملفات تعريف الارتباط بنجاح!"
+   },
+   "notificationProfileDeleted": {
+      "message": "تم حذف الملف الشخصي بنجاح!"
+   },
+   "notificationProfileFavorited": {
+      "message": "تم إضافة الملف الشخصي إلى المفضلة"
+   },
+   "notificationProfileLoaded": {
+      "message": "تم تحميل الملف الشخصي بنجاح!"
+   },
+   "notificationProfileSaved": {
+      "message": "تم حفظ الملف الشخصي بنجاح!"
+   },
+   "notificationProfileUnfavorited": {
+      "message": "تم إزالة الملف الشخصي من المفضلة"
+   },
+   "notificationProfilesImported": {
+      "message": "تم استيراد الملفات الشخصية بنجاح!"
+   },
+   "notificationSelectedProfilesExported": {
+      "message": "تم تصدير الملفات الشخصية المحددة بنجاح!"
+   },
+   "notificationWebsiteProfilesExported": {
+      "message": "تم تصدير الملفات الشخصية لـ $DOMAIN$ بنجاح!",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "profileNamePlaceholder": {
+      "message": "أدخل اسم الملف الشخصي"
+   },
+   "ratingBody": {
+      "message": "إذا وجدت هذه الإضافة مفيدة، يرجى ترك تقييم 5 نجوم على سوق كروم الإلكتروني. هذا يساعد الآخرين في اكتشاف الإضافة أيضًا!"
+   },
+   "ratingBtn": {
+      "message": "⭐ قيّم"
+   },
+   "ratingMaybeLater": {
+      "message": "ربما لاحقًا"
+   },
+   "ratingNow": {
+      "message": "قيّم الآن"
+   },
+   "ratingTitle": {
+      "message": "هل تستمتع بمدير الملفات الشخصية برو؟"
+   },
+   "searchPlaceholder": {
+      "message": "ابحث عن المواقع أو الملفات الشخصية..."
+   },
+   "titleBackupRestore": {
+      "message": "نسخ احتياطي واستعادة"
+   },
+   "tooltipAddFavorite": {
+      "message": "إضافة إلى المفضلة"
+   },
+   "tooltipDeleteAll": {
+      "message": "حذف جميع الملفات الشخصية"
+   },
+   "tooltipDeleteProfile": {
+      "message": "حذف الملف الشخصي"
+   },
+   "tooltipExportWebsite": {
+      "message": "تصدير ملفات الموقع الشخصية"
+   },
+   "tooltipLoadProfile": {
+      "message": "تحميل الملف الشخصي"
+   },
+   "tooltipRemoveFavorite": {
+      "message": "إزالة من المفضلة"
+   },
+   "warningEnterProfileName": {
+      "message": "يرجى إدخال اسم الملف الشخصي"
+   },
+   "warningSelectProfilesToExport": {
+      "message": "يرجى تحديد الملفات الشخصية للتصدير"
+   }
+}

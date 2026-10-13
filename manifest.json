@@ -1,0 +1,47 @@
+{
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_popup": "popup/local.html"
+  },
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  "commands": {
+    "open_switcher_popup": {
+      "suggested_key": {
+        "default": "Alt+1"
+      },
+      "description": "Mở Switcher"
+    }
+  },
+  "default_locale": "en",
+  "description": "Local-only cookie and account profiles. No cloud or browser synchronization.",
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "incognito": "not_allowed",
+  "manifest_version": 3,
+  "name": "Switcher",
+  "permissions": [
+    "cookies",
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "version": "4.0.2",
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; object-src 'none'; connect-src 'none'; img-src 'self' data: https:; style-src 'self'; form-action 'none'; base-uri 'none'"
+  }
+}

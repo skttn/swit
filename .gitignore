@@ -1,0 +1,22 @@
+# Local backups and temporary files
+*.bak
+*.tmp
+*.log
+/popup_bak/
+
+# Generated test output
+/tests/results.txt
+/tests/*-results.txt
+/coverage/
+
+# Local dependencies and editor settings
+/node_modules/
+/.vscode/
+/.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets
+.env
+.env.*
+!.env.example

@@ -1,0 +1,274 @@
+{
+   "badgeNew": {
+      "message": "新建"
+   },
+   "btnClearCookies": {
+      "message": "🗑️ 清除Cookie"
+   },
+   "btnDeleteBackup": {
+      "message": "删除备份"
+   },
+   "btnDeleteCloudBackup": {
+      "message": "删除云备份"
+   },
+   "btnDriveRestore": {
+      "message": "Drive 恢复"
+   },
+   "btnDriveSignIn": {
+      "message": "使用Drive登录"
+   },
+   "btnExportAll": {
+      "message": "导出全部"
+   },
+   "btnExportCookies": {
+      "message": "📥 导出Cookie"
+   },
+   "btnExportSelected": {
+      "message": "导出选中项"
+   },
+   "btnImport": {
+      "message": "导入"
+   },
+   "btnImportCookies": {
+      "message": "📤 导入Cookie"
+   },
+   "btnSave": {
+      "message": "保存"
+   },
+   "btnSyncNow": {
+      "message": "立即同步"
+   },
+   "confirmDeleteAllBody": {
+      "message": "您确定要删除此域的所有配置文件吗？此操作无法撤销。"
+   },
+   "confirmDeleteAllProfiles": {
+      "message": "您确定要删除 $DOMAIN$ 的所有配置文件吗？",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteAllProfilesTitle": {
+      "message": "删除所有个人资料？"
+   },
+   "confirmDeleteAllTitle": {
+      "message": "确认删除$domain$的所有内容吗？",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteBody": {
+      "message": "您确定要删除个人资料'$profile$'吗？此操作无法撤销。",
+      "placeholders": {
+         "profile": {
+            "content": "$1",
+            "example": "我的个人资料"
+         }
+      }
+   },
+   "confirmDeleteCloudBackup": {
+      "message": "您确定要完全删除云备份文件夹及其所有数据吗？此操作无法撤销。"
+   },
+   "confirmDeleteCloudBackupTitle": {
+      "message": "删除云备份？"
+   },
+   "confirmDeleteProfileBody": {
+      "message": "您确定要删除个人资料'$PROFILE$?' 此操作无法撤销。",
+      "placeholders": {
+         "profile": {
+            "content": "$1"
+         }
+      }
+   },
+   "confirmDeleteProfileTitle": {
+      "message": "删除个人资料？"
+   },
+   "confirmDeleteTitle": {
+      "message": "确认删除"
+   },
+   "donateBtn": {
+      "message": "❤️ 捐赠"
+   },
+   "emptyStateDomain": {
+      "message": "未找到 \u003Cstrong>$DOMAIN$\u003C/strong> 的配置文件。\u003Cbr>开始为此网站创建配置文件。",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "emptyStateGeneral": {
+      "message": "未找到配置文件。\u003Cbr>开始为您访问的网站创建配置文件。"
+   },
+   "errorClearingCookies": {
+      "message": "清除Cookie时出错"
+   },
+   "errorDeletingCloudBackup": {
+      "message": "删除云备份失败"
+   },
+   "errorExportingCookies": {
+      "message": "导出Cookie时出错"
+   },
+   "errorExportingProfiles": {
+      "message": "导出配置文件时出错"
+   },
+   "errorImportingCookies": {
+      "message": "导入Cookie时出错"
+   },
+   "errorImportingProfiles": {
+      "message": "导入配置文件时出错：文件格式无效"
+   },
+   "errorLoadingProfile": {
+      "message": "加载配置文件时出错：$ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "No cookies found"
+         }
+      }
+   },
+   "errorLoadingProfiles": {
+      "message": "加载配置文件时出错"
+   },
+   "errorSavingProfile": {
+      "message": "保存配置文件时出错"
+   },
+   "extDesc": {
+      "message": "为您喜爱的网站提供高级配置文件管理"
+   },
+   "extName": {
+      "message": "配置文件管理器专业版"
+   },
+   "firstProfileHelp": {
+      "message": "为您的第一个配置文件输入名称并点击保存"
+   },
+   "labelDarkMode": {
+      "message": "深色模式"
+   },
+   "labelShowWebsites": {
+      "message": "显示所有网站"
+   },
+   "modalExportCancel": {
+      "message": "取消"
+   },
+   "modalExportConfirm": {
+      "message": "导出选中项"
+   },
+   "modalExportTitle": {
+      "message": "选择要导出的配置文件"
+   },
+   "noProfilesExport": {
+      "message": "没有可导出的配置文件。"
+   },
+   "noProfilesYet": {
+      "message": "还没有配置文件。\u003Cbr>在上方输入名称来创建一个。"
+   },
+   "notificationAllProfilesDeleted": {
+      "message": "$DOMAIN$ 的所有配置文件删除成功！",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "notificationAllProfilesExported": {
+      "message": "所有配置文件导出成功！"
+   },
+   "notificationCloudBackupDeleted": {
+      "message": "云备份文件夹及所有数据删除成功"
+   },
+   "notificationCookiesCleared": {
+      "message": "当前会话Cookie清除成功！"
+   },
+   "notificationCookiesExported": {
+      "message": "当前会话Cookie导出成功！"
+   },
+   "notificationCookiesImported": {
+      "message": "Cookie导入成功！"
+   },
+   "notificationProfileDeleted": {
+      "message": "配置文件删除成功！"
+   },
+   "notificationProfileFavorited": {
+      "message": "配置文件已添加到收藏夹"
+   },
+   "notificationProfileLoaded": {
+      "message": "配置文件加载成功！"
+   },
+   "notificationProfileSaved": {
+      "message": "配置文件保存成功！"
+   },
+   "notificationProfileUnfavorited": {
+      "message": "配置文件已从收藏夹中移除"
+   },
+   "notificationProfilesImported": {
+      "message": "配置文件导入成功！"
+   },
+   "notificationSelectedProfilesExported": {
+      "message": "选定的配置文件导出成功！"
+   },
+   "notificationWebsiteProfilesExported": {
+      "message": "$DOMAIN$ 的配置文件导出成功！",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "profileNamePlaceholder": {
+      "message": "输入配置文件名称"
+   },
+   "ratingBody": {
+      "message": "如果您觉得这个扩展有用，请考虑在Chrome网上应用店留下5星评价。这也有助于其他人发现这个扩展！"
+   },
+   "ratingBtn": {
+      "message": "⭐ 评价"
+   },
+   "ratingMaybeLater": {
+      "message": "稍后再说"
+   },
+   "ratingNow": {
+      "message": "立即评价"
+   },
+   "ratingTitle": {
+      "message": "喜欢配置文件管理器专业版吗？"
+   },
+   "searchPlaceholder": {
+      "message": "搜索网站或配置文件..."
+   },
+   "titleBackupRestore": {
+      "message": "备份和恢复"
+   },
+   "tooltipAddFavorite": {
+      "message": "添加到收藏夹"
+   },
+   "tooltipDeleteAll": {
+      "message": "删除所有配置文件"
+   },
+   "tooltipDeleteProfile": {
+      "message": "删除个人资料"
+   },
+   "tooltipExportWebsite": {
+      "message": "导出网站配置文件"
+   },
+   "tooltipLoadProfile": {
+      "message": "加载个人资料"
+   },
+   "tooltipRemoveFavorite": {
+      "message": "从收藏夹中删除"
+   },
+   "warningEnterProfileName": {
+      "message": "请输入配置文件名称"
+   },
+   "warningSelectProfilesToExport": {
+      "message": "请选择要导出的配置文件"
+   }
+}

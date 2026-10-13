@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><title>Chuyển đổi</title><link rel="stylesheet" href="local.css"><link id="light-theme" rel="stylesheet" href="light.css" media="(prefers-color-scheme: light)"><script type="module" src="theme.js"></script></head>
+<body>
+<header class="bar"><div class="brand"><img src="../logo.svg" alt="Chuyển đổi"><strong id="app-name">Chuyển đổi</strong><button id="language" class="language" type="button" aria-label="English" title="English"><i class="fa fa-globe" aria-hidden="true"></i></button><button id="backup-toggle" type="button" aria-label="Xuất và nhập" title="Xuất và nhập" aria-controls="backup-panel" aria-expanded="false"><i class="fa fa-exchange" aria-hidden="true"></i></button></div><label class="search-box"><i class="fa fa-search search-icon" aria-hidden="true"></i><input id="search" type="search" aria-label="Tìm kiếm" autofocus></label></header>
+<main>
+<div class="section-title" id="saved-title">Tài khoản đã lưu</div><div id="profiles"></div>
+<form id="save" class="dock"><input id="name" maxlength="100" required placeholder="Tên tài khoản cho trang đang mở"><button class="primary" id="save-button">Lưu phiên</button></form>
+<p id="status" role="status" aria-live="polite"></p>
+<dialog id="backup-panel" aria-labelledby="backup-title" aria-describedby="backup-note"><div class="panel-content">
+<h2 id="backup-title">Xuất và nhập</h2>
+<p id="backup-note">Mật khẩu riêng (8–256 ký tự) không được lưu; quên mật khẩu sẽ không khôi phục được.</p>
+<label for="password" id="password-label">Mật khẩu sao lưu</label><input id="password" type="password" minlength="8" maxlength="256" autocomplete="off" placeholder="Ít nhất 8 ký tự">
+<label for="passwordConfirm" id="password-confirm-label">Xác nhận mật khẩu khi xuất</label><input id="passwordConfirm" type="password" maxlength="256" autocomplete="off" placeholder="Nhập lại mật khẩu">
+<div class="button-row"><button id="export" class="secondary">Xuất</button><button id="import" class="secondary">Nhập</button><button id="backup-close" type="button">Hủy</button></div>
+<input id="file" type="file" accept=".json,application/json" hidden>
+<p id="backup-status" role="status" aria-live="polite"></p>
+</div></dialog>
+</main>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+<form method="dialog">
+<h2 id="confirm-title"></h2><p id="confirm-message"></p>
+<p id="confirm-note" hidden></p>
+<div id="import-password-field" hidden><label class="dialog-label" for="import-password" id="import-password-label">Mật khẩu sao lưu</label><input id="import-password" type="password" minlength="8" maxlength="256" autocomplete="off" disabled required></div>
+<div class="dialog-actions"><button id="confirm-cancel" value="cancel" formnovalidate autofocus>Hủy</button><button id="confirm-accept" value="accept" class="primary">Xác nhận</button></div>
+</form>
+</dialog>
+<dialog id="rename-dialog" aria-labelledby="rename-title">
+<form method="dialog">
+<h2 id="rename-title">Đổi tên tài khoản</h2>
+<label class="dialog-label" for="rename-input" id="rename-label">Tên tài khoản mới</label>
+<input id="rename-input" maxlength="100" autocomplete="off" required>
+<div class="dialog-actions"><button id="rename-cancel" value="cancel" autofocus>Hủy</button><button id="rename-accept" value="accept" class="primary">Đổi tên</button></div>
+</form>
+</dialog>
+<script type="module" src="local.js"></script>
+</body></html>

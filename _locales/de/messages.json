@@ -1,0 +1,274 @@
+{
+   "badgeNew": {
+      "message": "Neu"
+   },
+   "btnClearCookies": {
+      "message": "🗑️ Cookies Löschen"
+   },
+   "btnDeleteBackup": {
+      "message": "Backup löschen"
+   },
+   "btnDeleteCloudBackup": {
+      "message": "Cloud-Backup löschen"
+   },
+   "btnDriveRestore": {
+      "message": "Drive-Wiederherst."
+   },
+   "btnDriveSignIn": {
+      "message": "Mit Drive anmelden"
+   },
+   "btnExportAll": {
+      "message": "Alles Exportieren"
+   },
+   "btnExportCookies": {
+      "message": "📥 Cookies Exportieren"
+   },
+   "btnExportSelected": {
+      "message": "Ausgewählte Exportieren"
+   },
+   "btnImport": {
+      "message": "Importieren"
+   },
+   "btnImportCookies": {
+      "message": "📤 Cookies Importieren"
+   },
+   "btnSave": {
+      "message": "Speichern"
+   },
+   "btnSyncNow": {
+      "message": "Jetzt synchronisieren"
+   },
+   "confirmDeleteAllBody": {
+      "message": "Sind Sie sicher, dass Sie alle Profile für diese Domain löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
+   },
+   "confirmDeleteAllProfiles": {
+      "message": "Sind Sie sicher, dass Sie alle Profile für $DOMAIN$ löschen möchten?",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteAllProfilesTitle": {
+      "message": "Alle Profile löschen?"
+   },
+   "confirmDeleteAllTitle": {
+      "message": "Alles für $domain$ löschen bestätigen?",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteBody": {
+      "message": "Sind Sie sicher, dass Sie das Profil '$profile$' löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "placeholders": {
+         "profile": {
+            "content": "$1",
+            "example": "Mein Profil"
+         }
+      }
+   },
+   "confirmDeleteCloudBackup": {
+      "message": "Sind Sie sicher, dass Sie den Cloud-Backup-Ordner und alle seine Daten vollständig löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
+   },
+   "confirmDeleteCloudBackupTitle": {
+      "message": "Cloud-Backup löschen?"
+   },
+   "confirmDeleteProfileBody": {
+      "message": "Sind Sie sicher, dass Sie das Profil '$PROFILE$?' löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "placeholders": {
+         "profile": {
+            "content": "$1"
+         }
+      }
+   },
+   "confirmDeleteProfileTitle": {
+      "message": "Profil löschen?"
+   },
+   "confirmDeleteTitle": {
+      "message": "Löschen bestätigen"
+   },
+   "donateBtn": {
+      "message": "❤️ Spenden"
+   },
+   "emptyStateDomain": {
+      "message": "Keine Profile für \u003Cstrong>$DOMAIN$\u003C/strong> gefunden.\u003Cbr>Beginnen Sie mit der Erstellung eines Profils für diese Website.",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "emptyStateGeneral": {
+      "message": "Keine Profile gefunden.\u003Cbr>Beginnen Sie mit der Erstellung eines Profils für die Websites, die Sie besuchen."
+   },
+   "errorClearingCookies": {
+      "message": "Fehler beim Löschen der Cookies"
+   },
+   "errorDeletingCloudBackup": {
+      "message": "Fehler beim Löschen des Cloud-Backups"
+   },
+   "errorExportingCookies": {
+      "message": "Fehler beim Exportieren der Cookies"
+   },
+   "errorExportingProfiles": {
+      "message": "Fehler beim Exportieren der Profile"
+   },
+   "errorImportingCookies": {
+      "message": "Fehler beim Importieren der Cookies"
+   },
+   "errorImportingProfiles": {
+      "message": "Fehler beim Importieren der Profile: Ungültiges Dateiformat"
+   },
+   "errorLoadingProfile": {
+      "message": "Fehler beim Laden des Profils: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "No cookies found"
+         }
+      }
+   },
+   "errorLoadingProfiles": {
+      "message": "Fehler beim Laden der Profile"
+   },
+   "errorSavingProfile": {
+      "message": "Fehler beim Speichern des Profils"
+   },
+   "extDesc": {
+      "message": "Erweiterte Profilverwaltung für Ihre Lieblings-Websites"
+   },
+   "extName": {
+      "message": "Profil-Manager Pro"
+   },
+   "firstProfileHelp": {
+      "message": "Geben Sie einen Namen für Ihr erstes Profil ein und klicken Sie auf Speichern"
+   },
+   "labelDarkMode": {
+      "message": "Dunkler Modus"
+   },
+   "labelShowWebsites": {
+      "message": "Alle Websites Anzeigen"
+   },
+   "modalExportCancel": {
+      "message": "Abbrechen"
+   },
+   "modalExportConfirm": {
+      "message": "Ausgewählte Exportieren"
+   },
+   "modalExportTitle": {
+      "message": "Profile zum Exportieren Auswählen"
+   },
+   "noProfilesExport": {
+      "message": "Keine Profile zum Exportieren verfügbar."
+   },
+   "noProfilesYet": {
+      "message": "Noch keine Profile.\u003Cbr>Erstellen Sie eines, indem Sie oben einen Namen eingeben."
+   },
+   "notificationAllProfilesDeleted": {
+      "message": "Alle Profile für $DOMAIN$ erfolgreich gelöscht!",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "notificationAllProfilesExported": {
+      "message": "Alle Profile erfolgreich exportiert!"
+   },
+   "notificationCloudBackupDeleted": {
+      "message": "Cloud-Backup-Ordner und alle Daten erfolgreich gelöscht"
+   },
+   "notificationCookiesCleared": {
+      "message": "Aktuelle Sitzungs-Cookies erfolgreich gelöscht!"
+   },
+   "notificationCookiesExported": {
+      "message": "Aktuelle Sitzungs-Cookies erfolgreich exportiert!"
+   },
+   "notificationCookiesImported": {
+      "message": "Cookies erfolgreich importiert!"
+   },
+   "notificationProfileDeleted": {
+      "message": "Profil erfolgreich gelöscht!"
+   },
+   "notificationProfileFavorited": {
+      "message": "Profil zu Favoriten hinzugefügt"
+   },
+   "notificationProfileLoaded": {
+      "message": "Profil erfolgreich geladen!"
+   },
+   "notificationProfileSaved": {
+      "message": "Profil erfolgreich gespeichert!"
+   },
+   "notificationProfileUnfavorited": {
+      "message": "Profil aus Favoriten entfernt"
+   },
+   "notificationProfilesImported": {
+      "message": "Profile erfolgreich importiert!"
+   },
+   "notificationSelectedProfilesExported": {
+      "message": "Ausgewählte Profile erfolgreich exportiert!"
+   },
+   "notificationWebsiteProfilesExported": {
+      "message": "Profile für $DOMAIN$ erfolgreich exportiert!",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "profileNamePlaceholder": {
+      "message": "Profilname eingeben"
+   },
+   "ratingBody": {
+      "message": "Wenn Sie diese Erweiterung hilfreich finden, hinterlassen Sie bitte eine 5-Sterne-Bewertung im Chrome Web Store. Das hilft anderen, die Erweiterung zu entdecken!"
+   },
+   "ratingBtn": {
+      "message": "⭐ Bewerten"
+   },
+   "ratingMaybeLater": {
+      "message": "Vielleicht Später"
+   },
+   "ratingNow": {
+      "message": "Jetzt Bewerten"
+   },
+   "ratingTitle": {
+      "message": "Gefällt Ihnen Profil-Manager Pro?"
+   },
+   "searchPlaceholder": {
+      "message": "Websites oder Profile suchen..."
+   },
+   "titleBackupRestore": {
+      "message": "Sicherung und Wiederherstellung"
+   },
+   "tooltipAddFavorite": {
+      "message": "Zu Favoriten hinzufügen"
+   },
+   "tooltipDeleteAll": {
+      "message": "Alle Profile löschen"
+   },
+   "tooltipDeleteProfile": {
+      "message": "Profil löschen"
+   },
+   "tooltipExportWebsite": {
+      "message": "Website-Profile exportieren"
+   },
+   "tooltipLoadProfile": {
+      "message": "Profil laden"
+   },
+   "tooltipRemoveFavorite": {
+      "message": "Aus Favoriten entfernen"
+   },
+   "warningEnterProfileName": {
+      "message": "Bitte geben Sie einen Profilnamen ein"
+   },
+   "warningSelectProfilesToExport": {
+      "message": "Bitte wählen Sie Profile zum Exportieren aus"
+   }
+}

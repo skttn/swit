@@ -1,0 +1,272 @@
+{
+   "badgeNew": {
+      "message": "New"
+   },
+   "btnClearCookies": {
+      "message": "🗑️ Clear Cookies"
+   },
+   "btnDeleteBackup": {
+      "message": "Delete Backup"
+   },
+   "btnDeleteCloudBackup": {
+      "message": "Delete Cloud Backup"
+   },
+   "btnDriveRestore": {
+      "message": "Drive Restore"
+   },
+   "btnDriveSignIn": {
+      "message": "Sign in with Drive"
+   },
+   "btnExportAll": {
+      "message": "Export All"
+   },
+   "btnExportCookies": {
+      "message": "📥 Export Cookies"
+   },
+   "btnExportSelected": {
+      "message": "Export Selected"
+   },
+   "btnImport": {
+      "message": "Import"
+   },
+   "btnImportCookies": {
+      "message": "📤 Import Cookies"
+   },
+   "btnSave": {
+      "message": "Save"
+   },
+   "btnSyncNow": {
+      "message": "Sync Now"
+   },
+   "confirmDeleteAllBody": {
+      "message": "Are you sure you want to delete all profiles for this domain? This action cannot be undone."
+   },
+   "confirmDeleteAllProfiles": {
+      "message": "Are you sure you want to delete all profiles for $domain$?",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteAllTitle": {
+      "message": "Confirm Delete All for $domain$?",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteBody": {
+      "message": "Are you sure you want to delete the profile '$profile$'? This action cannot be undone.",
+      "placeholders": {
+         "profile": {
+            "content": "$1",
+            "example": "My Profile"
+         }
+      }
+   },
+   "confirmDeleteCloudBackup": {
+      "message": "Are you sure you want to completely delete the cloud backup folder and all its data? This action cannot be undone."
+   },
+   "confirmDeleteCloudBackupTitle": {
+      "message": "Delete Cloud Backup?"
+   },
+   "confirmDeleteProfileBody": {
+      "message": "Are you sure you want to delete the profile '$profile$?'",
+      "placeholders": {
+         "profile": {
+            "content": "$1",
+            "example": "My Profile"
+         }
+      }
+   },
+   "confirmDeleteTitle": {
+      "message": "Confirm Deletion"
+   },
+   "donateBtn": {
+      "message": "❤️ Donate"
+   },
+   "emptyStateDomain": {
+      "message": "No profiles found for \u003Cstrong>$domain$\u003C/strong>.\u003Cbr>Start by creating a profile for this website.",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "emptyStateGeneral": {
+      "message": "No profiles found.\u003Cbr>Start by creating a profile for the websites you visit."
+   },
+   "errorClearingCookies": {
+      "message": "Error clearing cookies"
+   },
+   "errorDeletingCloudBackup": {
+      "message": "Failed to delete cloud backup"
+   },
+   "errorExportingCookies": {
+      "message": "Error exporting cookies"
+   },
+   "errorExportingProfiles": {
+      "message": "Error exporting profiles"
+   },
+   "errorImportingCookies": {
+      "message": "Error importing cookies"
+   },
+   "errorImportingProfiles": {
+      "message": "Error importing profiles: Invalid file format"
+   },
+   "errorLoadingProfile": {
+      "message": "Error loading profile: $error$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "No cookies found"
+         }
+      }
+   },
+   "errorLoadingProfiles": {
+      "message": "Error loading profiles"
+   },
+   "errorSavingProfile": {
+      "message": "Error saving profile"
+   },
+   "extDesc": {
+      "message": "Advanced profile management for your favorite websites"
+   },
+   "extName": {
+      "message": "Profile Manager Pro"
+   },
+   "firstProfileHelp": {
+      "message": "Enter a name for your first profile and click Save"
+   },
+   "labelDarkMode": {
+      "message": "Dark Mode"
+   },
+   "labelShowWebsites": {
+      "message": "All Domains"
+   },
+   "modalExportCancel": {
+      "message": "Cancel"
+   },
+   "modalExportConfirm": {
+      "message": "Export Selected"
+   },
+   "modalExportTitle": {
+      "message": "Select Profiles to Export"
+   },
+   "noProfilesExport": {
+      "message": "No profiles available to export."
+   },
+   "noProfilesYet": {
+      "message": "No profiles yet.\u003Cbr>Create one by entering a name above."
+   },
+   "notificationAllProfilesDeleted": {
+      "message": "All profiles for $domain$ deleted successfully!",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "notificationAllProfilesExported": {
+      "message": "All profiles exported successfully!"
+   },
+   "notificationCloudBackupDeleted": {
+      "message": "Cloud backup folder and all data deleted successfully"
+   },
+   "notificationCookiesCleared": {
+      "message": "Current session cookies cleared successfully!"
+   },
+   "notificationCookiesExported": {
+      "message": "Current session cookies exported successfully!"
+   },
+   "notificationCookiesImported": {
+      "message": "Cookies imported successfully!"
+   },
+   "notificationProfileDeleted": {
+      "message": "Profile deleted successfully!"
+   },
+   "notificationProfileFavorited": {
+      "message": "Profile added to favorites"
+   },
+   "notificationProfileLoaded": {
+      "message": "Profile loaded successfully!"
+   },
+   "notificationProfileSaved": {
+      "message": "Profile saved successfully!"
+   },
+   "notificationProfileUnfavorited": {
+      "message": "Profile removed from favorites"
+   },
+   "notificationProfilesImported": {
+      "message": "Profiles imported successfully!"
+   },
+   "notificationSelectedProfilesExported": {
+      "message": "Selected profiles exported successfully!"
+   },
+   "notificationWebsiteProfilesExported": {
+      "message": "Profiles for $domain$ exported successfully!",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "profileNamePlaceholder": {
+      "message": "Enter profile name"
+   },
+   "ratingBody": {
+      "message": "If you find this extension helpful, please consider leaving a 5-star rating on the Chrome Web Store. It helps others discover the extension too!"
+   },
+   "ratingBtn": {
+      "message": "⭐ Rate"
+   },
+   "ratingMaybeLater": {
+      "message": "Maybe Later"
+   },
+   "ratingNow": {
+      "message": "Rate Now"
+   },
+   "ratingTitle": {
+      "message": "Enjoying Profile Manager Pro?"
+   },
+   "searchPlaceholder": {
+      "message": "Search websites or profiles..."
+   },
+   "titleBackupRestore": {
+      "message": "Backup & Restore"
+   },
+   "titleDisplayOptions": {
+      "message": "Display Options"
+   },
+   "tooltipAddFavorite": {
+      "message": "Add to favorites"
+   },
+   "tooltipDeleteAll": {
+      "message": "Delete all profiles"
+   },
+   "tooltipDeleteProfile": {
+      "message": "Delete profile"
+   },
+   "tooltipExportWebsite": {
+      "message": "Export website profiles"
+   },
+   "tooltipLoadProfile": {
+      "message": "Load profile"
+   },
+   "tooltipRemoveFavorite": {
+      "message": "Remove from favorites"
+   },
+   "warningEnterProfileName": {
+      "message": "Please enter a profile name"
+   },
+   "warningSelectProfilesToExport": {
+      "message": "Please select profiles to export"
+   }
+}

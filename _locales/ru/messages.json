@@ -1,0 +1,274 @@
+{
+   "badgeNew": {
+      "message": "Новый"
+   },
+   "btnClearCookies": {
+      "message": "🗑️ Очистить Куки"
+   },
+   "btnDeleteBackup": {
+      "message": "Удалить бэкап"
+   },
+   "btnDeleteCloudBackup": {
+      "message": "Удалить облачную резервную копию"
+   },
+   "btnDriveRestore": {
+      "message": "Восстановить Drive"
+   },
+   "btnDriveSignIn": {
+      "message": "Войти через Drive"
+   },
+   "btnExportAll": {
+      "message": "Экспортировать всё"
+   },
+   "btnExportCookies": {
+      "message": "📥 Экспорт Куки"
+   },
+   "btnExportSelected": {
+      "message": "Экспортировать выбранное"
+   },
+   "btnImport": {
+      "message": "Импорт"
+   },
+   "btnImportCookies": {
+      "message": "📤 Импорт Куки"
+   },
+   "btnSave": {
+      "message": "Сохранить"
+   },
+   "btnSyncNow": {
+      "message": "Синхронизировать сейчас"
+   },
+   "confirmDeleteAllBody": {
+      "message": "Вы уверены, что хотите удалить все профили для этого домена? Это действие нельзя отменить."
+   },
+   "confirmDeleteAllProfiles": {
+      "message": "Вы уверены, что хотите удалить все профили для $DOMAIN$?",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteAllProfilesTitle": {
+      "message": "Удалить все профили?"
+   },
+   "confirmDeleteAllTitle": {
+      "message": "Подтвердить удаление всего для $domain$?",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "confirmDeleteBody": {
+      "message": "Вы уверены, что хотите удалить профиль '$profile$'? Это действие нельзя отменить.",
+      "placeholders": {
+         "profile": {
+            "content": "$1",
+            "example": "Мой профиль"
+         }
+      }
+   },
+   "confirmDeleteCloudBackup": {
+      "message": "Вы уверены, что хотите полностью удалить папку облачной резервной копии и все её данные? Это действие нельзя отменить."
+   },
+   "confirmDeleteCloudBackupTitle": {
+      "message": "Удалить облачную резервную копию?"
+   },
+   "confirmDeleteProfileBody": {
+      "message": "Вы уверены, что хотите удалить профиль '$PROFILE$?' Это действие нельзя отменить.",
+      "placeholders": {
+         "profile": {
+            "content": "$1"
+         }
+      }
+   },
+   "confirmDeleteProfileTitle": {
+      "message": "Удалить профиль?"
+   },
+   "confirmDeleteTitle": {
+      "message": "Подтвердите удаление"
+   },
+   "donateBtn": {
+      "message": "❤️ Пожертвовать"
+   },
+   "emptyStateDomain": {
+      "message": "Профили для \u003Cstrong>$DOMAIN$\u003C/strong> не найдены.\u003Cbr>Начните с создания профиля для этого сайта.",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "emptyStateGeneral": {
+      "message": "Профили не найдены.\u003Cbr>Начните с создания профиля для посещаемых вами сайтов."
+   },
+   "errorClearingCookies": {
+      "message": "Ошибка очистки cookies"
+   },
+   "errorDeletingCloudBackup": {
+      "message": "Ошибка удаления облачной резервной копии"
+   },
+   "errorExportingCookies": {
+      "message": "Ошибка экспорта cookies"
+   },
+   "errorExportingProfiles": {
+      "message": "Ошибка экспорта профилей"
+   },
+   "errorImportingCookies": {
+      "message": "Ошибка импорта cookies"
+   },
+   "errorImportingProfiles": {
+      "message": "Ошибка импорта профилей: Неверный формат файла"
+   },
+   "errorLoadingProfile": {
+      "message": "Ошибка загрузки профиля: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "No cookies found"
+         }
+      }
+   },
+   "errorLoadingProfiles": {
+      "message": "Ошибка загрузки профилей"
+   },
+   "errorSavingProfile": {
+      "message": "Ошибка сохранения профиля"
+   },
+   "extDesc": {
+      "message": "Расширенное управление профилями для ваших любимых веб-сайтов"
+   },
+   "extName": {
+      "message": "Менеджер Профилей Про"
+   },
+   "firstProfileHelp": {
+      "message": "Введите имя для вашего первого профиля и нажмите Сохранить"
+   },
+   "labelDarkMode": {
+      "message": "Тёмная тема"
+   },
+   "labelShowWebsites": {
+      "message": "Показать все сайты"
+   },
+   "modalExportCancel": {
+      "message": "Отмена"
+   },
+   "modalExportConfirm": {
+      "message": "Экспортировать выбранное"
+   },
+   "modalExportTitle": {
+      "message": "Выберите профили для экспорта"
+   },
+   "noProfilesExport": {
+      "message": "Нет профилей для экспорта."
+   },
+   "noProfilesYet": {
+      "message": "Пока нет профилей.\u003Cbr>Создайте один, введя имя выше."
+   },
+   "notificationAllProfilesDeleted": {
+      "message": "Все профили для $DOMAIN$ успешно удалены!",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "notificationAllProfilesExported": {
+      "message": "Все профили успешно экспортированы!"
+   },
+   "notificationCloudBackupDeleted": {
+      "message": "Папка облачной резервной копии и все данные успешно удалены"
+   },
+   "notificationCookiesCleared": {
+      "message": "Cookies текущей сессии успешно очищены!"
+   },
+   "notificationCookiesExported": {
+      "message": "Cookies текущей сессии успешно экспортированы!"
+   },
+   "notificationCookiesImported": {
+      "message": "Cookies успешно импортированы!"
+   },
+   "notificationProfileDeleted": {
+      "message": "Профиль успешно удален!"
+   },
+   "notificationProfileFavorited": {
+      "message": "Профиль добавлен в избранное"
+   },
+   "notificationProfileLoaded": {
+      "message": "Профиль успешно загружен!"
+   },
+   "notificationProfileSaved": {
+      "message": "Профиль успешно сохранён!"
+   },
+   "notificationProfileUnfavorited": {
+      "message": "Профиль удален из избранного"
+   },
+   "notificationProfilesImported": {
+      "message": "Профили успешно импортированы!"
+   },
+   "notificationSelectedProfilesExported": {
+      "message": "Выбранные профили успешно экспортированы!"
+   },
+   "notificationWebsiteProfilesExported": {
+      "message": "Профили для $DOMAIN$ успешно экспортированы!",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "profileNamePlaceholder": {
+      "message": "Введите имя профиля"
+   },
+   "ratingBody": {
+      "message": "Если вы находите это расширение полезным, пожалуйста, оставьте 5-звёздочную оценку в Chrome Web Store. Это поможет другим людям найти расширение!"
+   },
+   "ratingBtn": {
+      "message": "⭐ Оценить"
+   },
+   "ratingMaybeLater": {
+      "message": "Возможно, позже"
+   },
+   "ratingNow": {
+      "message": "Оценить сейчас"
+   },
+   "ratingTitle": {
+      "message": "Нравится Менеджер Профилей Про?"
+   },
+   "searchPlaceholder": {
+      "message": "Поиск сайтов или профилей..."
+   },
+   "titleBackupRestore": {
+      "message": "Резервное копирование и восстановление"
+   },
+   "tooltipAddFavorite": {
+      "message": "Добавить в избранное"
+   },
+   "tooltipDeleteAll": {
+      "message": "Удалить все профили"
+   },
+   "tooltipDeleteProfile": {
+      "message": "Удалить профиль"
+   },
+   "tooltipExportWebsite": {
+      "message": "Экспортировать профили сайта"
+   },
+   "tooltipLoadProfile": {
+      "message": "Загрузить профиль"
+   },
+   "tooltipRemoveFavorite": {
+      "message": "Удалить из избранного"
+   },
+   "warningEnterProfileName": {
+      "message": "Пожалуйста, введите имя профиля"
+   },
+   "warningSelectProfilesToExport": {
+      "message": "Пожалуйста, выберите профили для экспорта"
+   }
+}
