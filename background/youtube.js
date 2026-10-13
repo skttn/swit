@@ -100,13 +100,13 @@ export async function readChannelInTab(tabId,studio=false) {
 function isYoutubeTab(tab,studio=false) {
  try {
   const url=new URL(tab.url);
-  return !tab.incognito && url.protocol==='https:' && (studio?url.hostname==='studio.youtube.com':['youtube.com','www.youtube.com'].includes(url.hostname));
+  return url.protocol==='https:' && (studio?url.hostname==='studio.youtube.com':['youtube.com','www.youtube.com'].includes(url.hostname));
  } catch {return false;}
 }
 
 export async function prepareYoutubeTab(studio=false) {
  let [tab]=await chrome.tabs.query({active:true,currentWindow:true});
- if(!tab || tab.incognito) throw Error('Không có tab thường phù hợp để chuyển tài khoản.');
+ if(!tab) throw Error('Không có tab phù hợp để chuyển tài khoản.');
  if(!isYoutubeTab(tab,studio)) tab=await chrome.tabs.update(tab.id,{url:studio?'https://studio.youtube.com/':'https://www.youtube.com/'});
  const deadline=Date.now()+20000;
  while(Date.now()<deadline) {
@@ -126,7 +126,7 @@ export async function prepareYoutubeTab(studio=false) {
 
 export async function clickYoutubeAccount(tabId,handle,studio=false) {
  const tab=await chrome.tabs.get(tabId);
- if(!isYoutubeTab(tab,studio)) throw Error('Tab đã rời YouTube hoặc không phải tab thường. Đã dừng thao tác.');
+ if(!isYoutubeTab(tab,studio)) throw Error('Tab đã rời YouTube. Đã dừng thao tác.');
  const [result]=await chrome.scripting.executeScript({target:{tabId},world:'MAIN',func:youtubeAccountClick,args:[handle,studio]});
  if(result?.result?.alreadySelected) return {success:true,message:'Đang dùng đúng kênh '+(studio?'Studio.':'YouTube.')};
  if(!result?.result?.clicked) throw Error('Không xác nhận được việc chọn tài khoản YouTube.');
@@ -136,7 +136,6 @@ export async function clickYoutubeAccount(tabId,handle,studio=false) {
   await new Promise(resolve=>setTimeout(resolve,500));
   let current;
   try {current=await chrome.tabs.get(tabId);} catch {throw Error('Tab đã bị đóng trong lúc xác minh tài khoản.');}
-  if(current.incognito) throw Error('Không xác minh tài khoản trong tab ẩn danh.');
   if(current.status!=='complete' || current.pendingUrl) continue;
   if(!isYoutubeTab(current,studio)) {
    detail='Tab chưa trở về '+(studio?'Studio.':'YouTube.');

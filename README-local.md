@@ -1,16 +1,18 @@
 # Switcher
 
-## Security model (v4.0.1)
+## Security model
 
 - Cookie profiles are sensitive login sessions. This extension is for personal or
   small-group testing, not a security-audited product.
-- The extension starts with no website host permission. Use **Cấp quyền website
-  này** only on the site being managed; revoke permissions when finished.
+- The extension requests HTTP/HTTPS website access to manage cookies. Review
+  website access in the browser's extension settings before using it.
 - A profile is keyed by the hostname shown in the active tab, but its cookie
-  scope includes the same registrable two-label domain. This supports sites
+   scope groups hosts by their last two labels (not a full public-suffix lookup). This supports sites
   such as `school.vnedu.vn` that authenticate through `user.vnedu.vn`.
   Unrelated domains, partitioned-cookie, invalid-expiry and malformed cookie
-  records are rejected. Incognito windows are not supported.
+   records are rejected. InPrivate/incognito is supported after the user enables
+   it in the browser's extension settings. Cookie operations use the target tab's
+   cookie store, separately from regular-window cookies.
 - Stored profiles use AES-GCM. The encryption key is kept in the same local
   extension storage, so this protects against casual storage inspection only;
   it does not protect a compromised browser profile or a malicious extension.
@@ -41,7 +43,7 @@ service-worker DevTools/network panel in Edge before sharing it.
 6. Đóng/mở popup và khởi động lại Edge để kiểm tra dữ liệu còn lưu.
 
 Bản unpacked có vùng lưu trữ riêng, không tự lấy profile từ tiện ích gốc.
-Nếu cần chuyển dữ liệu, dùng xuất/nhập JSON thủ công từ nguồn tin cậy.
+Nếu cần chuyển dữ liệu, dùng chức năng xuất/nhập bản sao lưu đã mã hóa bằng mật khẩu, từ nguồn tin cậy.
 Không bật đồng bộ của tiện ích gốc để thực hiện việc chuyển dữ liệu.
 
 ## Phạm vi và giới hạn
@@ -50,12 +52,19 @@ Không bật đồng bộ của tiện ích gốc để thực hiện việc chu
 - Quyền cookies, storage, activeTab và HTTP/HTTPS được giữ để lưu và phục hồi phiên website.
 - Website vẫn cần Internet. Tải lại tab khi chuyển profile sẽ tạo lưu lượng của website.
 - Profile được mã hóa AES-GCM nhưng khóa nằm trong cùng vùng lưu trữ cục bộ. Không bảo vệ trước người có quyền đọc toàn bộ hồ sơ Edge.
-- JSON xuất thủ công chứa cookie dạng rõ. Không chia sẻ; không lưu trong thư mục cloud; xóa khi không cần.
+- Bản sao lưu JSON chứa dữ liệu mã hóa, không phải cookie dạng rõ. Giữ kín mật khẩu và chỉ nhập bản sao lưu từ nguồn tin cậy.
 - Chuyển phiên chỉ xử lý cookie, không localStorage/IndexedDB hoặc phiên phía máy chủ. Một số website cần đăng nhập lại.
 - Logic nhóm domain và xử lý cookie kế thừa bản gốc; chưa bảo đảm mọi public suffix, cookie partitioned hoặc nhiều cookie store.
 - Không có thay đổi nào đối với bản gốc trong thư mục Edge hoặc bản sao cloud/bookmark đã tồn tại trước đây.
 
 ## Kiểm tra
-Kiểm thử Node với API giả lập đã xác nhận cú pháp, import, manifest, lưu mã hóa, chuyển cookie, yêu thích, nhập/xuất profile, xóa cookie và từ chối hành động đồng bộ.
+### InPrivate / Ẩn danh
+- Sau khi tải lại tiện ích tại `edge://extensions`, mở Chi tiết của Switcher và bật **Cho phép trong InPrivate**. Trên Chrome, bật **Allow in Incognito** tại `chrome://extensions`.
+- Tiện ích dùng chung tiến trình nền và danh sách phiên đã lưu giữa cửa sổ thường và InPrivate; cookie được đọc/ghi vào kho của tab đang thao tác, không phải luôn vào kho thường.
+- **Lưu phiên trong InPrivate vẫn lưu dữ liệu lâu dài vào bộ nhớ tiện ích.** Đóng InPrivate không xóa bản lưu, tên tài khoản hoặc dữ liệu giao diện đã lưu. Muốn xóa bản lưu, dùng Xóa phiên trong tiện ích.
+- Dùng tài khoản thử nghiệm: lưu/chuyển phiên trong InPrivate rồi kiểm tra cửa sổ thường vẫn giữ nguyên cookie; thử lại theo chiều ngược lại. Kiểm tra cả khi đổi cửa sổ trong lúc đang chuyển phiên.
+- InPrivate không khắc phục cookie hết hạn hoặc phiên bị website vô hiệu hóa. Các cửa sổ InPrivate cùng hồ sơ trình duyệt cũng không phải các kho cookie độc lập với nhau.
+
+Bộ kiểm thử Node dùng API giả lập để kiểm tra các chức năng cookie, sao lưu, thứ tự profile, InPrivate và YouTube/Studio; không thay thế kiểm thử trực tiếp trên trình duyệt.
 Chạy bộ kiểm thử từ thư mục mã nguồn: `node --test tests/*.test.mjs`.
 Chưa kiểm thử UI và network trực tiếp trên Edge. Trong DevTools của popup/service worker, kiểm tra Console không lỗi và Network không có yêu cầu ra Internet; lưu lượng của website được tải lại không tính là lưu lượng tiện ích.

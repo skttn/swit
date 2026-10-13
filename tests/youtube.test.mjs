@@ -24,7 +24,7 @@ test('tab preparation navigates the current tab instead of finding or creating a
  }
  assert.deepEqual(calls,Array.from({length:3},()=>[3,{url:'https://www.youtube.com/'}]));
 });
-test('tab preparation waits for load and rejects closed, redirected and incognito tabs',async()=>{
+test('tab preparation waits for load, supports incognito and rejects closed or redirected tabs',async()=>{
  const tab={id:2,url:'https://www.youtube.com/',status:'complete',active:true};
  let reads=0;
  globalThis.chrome={tabs:{query:async()=>[tab],get:async()=>({...tab,status:++reads===1?'loading':'complete'})}};
@@ -35,9 +35,10 @@ test('tab preparation waits for load and rejects closed, redirected and incognit
  globalThis.chrome.tabs.get=async()=>{throw Error('closed');};
  await assert.rejects(prepareYoutubeTab(),/bị đóng/);
  tab.incognito=true;
- await assert.rejects(prepareYoutubeTab(),/tab thường/);
+ globalThis.chrome.tabs.get=async()=>({...tab});
+ assert.equal((await prepareYoutubeTab()).incognito,true);
  globalThis.chrome.tabs.query=async()=>[];
- await assert.rejects(prepareYoutubeTab(),/tab thường/);
+ await assert.rejects(prepareYoutubeTab(),/tab phù hợp/);
 });
 function readChannel(config,pathname='/',hostname='www.youtube.com') {
  return runInNewContext(`(${readCurrentChannel.toString()})()`,{

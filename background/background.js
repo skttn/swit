@@ -12,7 +12,7 @@ chrome.commands.onCommand.addListener(command=>{
 async function activeSite(host,requireMatchingSite=true) {
  validHost(host);
  const [tab]=await chrome.tabs.query({active:true,currentWindow:true});
- if(!tab || tab.incognito) throw Error('Không có tab thường phù hợp.');
+ if(!tab) throw Error('Không có tab phù hợp.');
  const url=tab.url?new URL(tab.url):null;
  const matches=!!url && ['http:','https:'].includes(url.protocol) && url.hostname===host;
  if(requireMatchingSite && !matches) throw Error('Hãy mở đúng website trước khi thao tác.');
@@ -31,7 +31,7 @@ async function currentCookies(host,storeId) {
   const domain=c.domain?.replace(/^\./,'');
    return typeof domain==='string' && (domain===scope || domain.endsWith('.'+scope));
  });
-  return validateCookies(scoped.filter(c=>!c.partitionKey),host);
+  return validateCookies(scoped,host);
 }
 function summary(profiles) {
  const result={};
@@ -51,13 +51,12 @@ async function doSwitch(domain,name,profiles) {
   }
   const target=validateCookies(profiles[domain][name].cookies,domain);
  checkTarget(target);
- const {storeId}=await activeSite(domain,false);
+ const {tab:active,storeId}=await activeSite(domain,false);
  const current=await currentCookies(domain,storeId);
  const norm = d => d.replace(/^\./,'');
  const same=current.length===target.length && target.every(t=>current.some(c=>c.name===t.name && c.value===t.value && norm(c.domain)===norm(t.domain) && c.path===t.path));
  if(same){
-  const [active]=await chrome.tabs.query({active:true,currentWindow:true});
-  if(active && !active.incognito){
+  if(active){
    let h=''; try{ if(active.url) h=new URL(active.url).hostname; }catch{}
    if(h===domain) await chrome.tabs.reload(active.id);
    else await chrome.tabs.update(active.id,{url:`https://${domain}/`});
@@ -70,8 +69,7 @@ async function doSwitch(domain,name,profiles) {
   catch {throw Error(`${error.message} Khôi phục phiên trước cũng thất bại. Có thể cần đăng nhập lại.`);}
   throw Error(`${error.message} Đã ghi lại và kiểm tra cookie của phiên trước.`);
  }
- const [active]=await chrome.tabs.query({active:true,currentWindow:true});
- if(active && !active.incognito) {
+ if(active) {
   let host='';
   try { if(active.url) host=new URL(active.url).hostname; } catch {}
   if(host===domain) await chrome.tabs.reload(active.id);
@@ -127,20 +125,16 @@ async function handle(message) {
  }
  else {
    if(action==='switchProfile') return doSwitch(domain,name,profiles);
-   const {storeId}=await activeSite(domain,action!=='switchProfile');
+    const {storeId}=await activeSite(domain);
   const current=await currentCookies(domain,storeId);
   if(action==='saveProfile') {
    checkTarget(current);
    if(profiles[domain]?.[name] && message.overwrite!==true) throw Error('Cần xác nhận ghi đè.');
    const prev=profiles[domain]?.[name];
    profiles[domain]??={}; profiles[domain][name]={name,domain,cookies:current,timestamp:Date.now(),isFavorite:prev?.isFavorite||false};
-  } else if(action==='switchProfile') {
-   return doSwitch(domain,name,profiles);
   } else {
    // clearCookies
-   try {await clear(current,storeId); }
-   catch(error) { throw Error(error.message); }
-   // after manual clear, if domain has autoLogin profile, user likely wants to stay logged out -> do not auto restore here
+    await clear(current,storeId);
    return {success:true,message:'Đã xóa cookie.'};
   }
  }

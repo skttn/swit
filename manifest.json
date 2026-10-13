@@ -19,7 +19,6 @@
       "description": "Mở Switcher"
     }
   },
-  "default_locale": "en",
   "description": "Local-only cookie and account profiles. No cloud or browser synchronization.",
   "host_permissions": [
     "http://*/*",
@@ -30,7 +29,7 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "incognito": "not_allowed",
+  "incognito": "spanning",
   "manifest_version": 3,
   "name": "Switcher",
   "permissions": [
