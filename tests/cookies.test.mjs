@@ -92,3 +92,16 @@ test('a failed restore permits clearing partial writes and restoring previous co
  await restore([previous],'0');
  assert.deepEqual(state.jar.map(c=>c.name),['previous']);
 });
+test('mixed expiry keeps session and live cookies without modifying the snapshot or expiry',async()=>{
+ const state=mock();
+ const live={...cookie,name:'live',expirationDate:Date.now()/1000+3600};
+ const expired={...cookie,name:'expired',expirationDate:1};
+ const saved=[expired,cookie,live];
+ const before=structuredClone(saved);
+ const target=checkTarget(saved);
+ assert.deepEqual(target,[cookie,live]);
+ assert.equal(await restore(target,'0'),2);
+ assert.deepEqual(saved,before);
+ assert.deepEqual(state.calls.map(c=>c.name),['SID','live']);
+ assert.equal(state.calls[1].expirationDate,live.expirationDate);
+});

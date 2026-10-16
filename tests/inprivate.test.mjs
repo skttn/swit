@@ -9,18 +9,18 @@ const cookieModule=await load('../background/cookies.js');
 const host='school.vnedu.vn';
 const cookie={name:'session',value:'saved',domain:host,path:'/',secure:true,httpOnly:true,hostOnly:true,sameSite:'lax'};
 function setup(incognito,same=false) {
- const tab={id:incognito?20:10,incognito,url:`https://${host}/v5/`};
+  const tab={id:incognito?20:10,windowId:7,incognito,url:`https://${host}/v5/`};
  const storeId=incognito?'private-store':'regular-store';
  const other=incognito?'regular-store':'private-store';
  const jars={ [storeId]:[{...cookie,value:same?'saved':'current'}], [other]:[{...cookie,value:'untouched'}] };
  const calls=[];
  let queries=0;
- const chrome={
+  const chrome={
   storage:{local:{setAccessLevel:async()=>{}}},
   commands:{onCommand:{addListener(){}}},
   runtime:{onMessage:{addListener(){}}},
   permissions:{contains:async()=>true},
-  tabs:{query:async()=>{queries++;return queries===1?[tab]:[{id:999,url:'https://example.org/'}];},reload:async id=>calls.push(['reload',id]),update:async(id,options)=>calls.push(['update',id,options])},
+   tabs:{query:async()=>{queries++;return queries===1?[tab]:[{id:999,url:'https://example.org/'}];},reload:async id=>calls.push(['reload',id]),update:async(id,options)=>calls.push(['update',id,options]),create:async options=>{calls.push(['create',options]);return {id:30,...options};},remove:async id=>calls.push(['removeTab',id])},
   cookies:{
    getAllCookieStores:async()=>[{id:'regular-store',tabIds:[10]},{id:'private-store',tabIds:[20]}],
    getAll:async({storeId})=>{calls.push(['get',storeId]);return jars[storeId];},
@@ -44,14 +44,39 @@ for(const incognito of [false,true]) {
   assert.equal(result.success,true);
   assert.equal(state.jars[state.storeId][0].value,'saved');
   assert.equal(state.jars[state.other][0].value,'untouched');
-  assert.ok(state.calls.filter(([kind])=>kind!=='reload').every(([,id])=>id===state.storeId));
-  assert.deepEqual(state.calls.at(-1),['reload',state.tab.id]);
+  assert.ok(state.calls.slice(0,-1).every(([,id])=>id===state.storeId));
+  assert.equal(state.calls.at(-1)[0],'update');
+  assert.equal(state.calls.at(-1)[1],state.tab.id);
+  assert.equal(state.calls.at(-1)[2].url,`https://${host}/`);
  });
 }
 test('matching InPrivate cookies reload the private tab without writes',async()=>{
  const state=setup(true,true);
+ state.tab.url=`https://${host}/`;
  await state.context.doSwitch(host,'A',{[host]:{A:{cookies:[cookie]}}});
  assert.deepEqual(state.calls,[['get',state.storeId],['reload',state.tab.id]]);
+});
+test('login path navigates to the saved domain root after switching',async()=>{
+  const state=setup(false);
+  state.tab.url=`https://${host}/Login.aspx?dv=C3`;
+  await state.context.doSwitch(host,'A',{[host]:{A:{cookies:[cookie]}}});
+  const navigation=state.calls.at(-1);
+  assert.equal(navigation[0],'update');
+  assert.equal(navigation[1],state.tab.id);
+  assert.equal(navigation[2].url,`https://${host}/`);
+  assert.equal(state.jars[state.storeId][0].value,'saved');
+  assert.ok(!state.calls.some(([kind])=>kind==='create'));
+});
+test('non-web active tab reuses an existing website tab without creating a tab',async()=>{
+  const state=setup(false);
+  state.tab.url='chrome://newtab/';
+  const result=await state.context.doSwitch(host,'A',{[host]:{A:{cookies:[cookie]}}});
+  assert.equal(result.success,true);
+  const navigation=state.calls.at(-1);
+  assert.equal(navigation[0],'update');
+  assert.equal(navigation[1],state.tab.id);
+  assert.equal(navigation[2].url,`https://${host}/`);
+  assert.ok(!state.calls.some(([kind])=>kind==='create'));
 });
 test('private save reads private cookies and unknown cookie store fails closed',async()=>{
  const state=setup(true);
@@ -63,4 +88,29 @@ test('private save reads private cookies and unknown cookie store fails closed',
  state.chrome.cookies.getAllCookieStores=async()=>[{id:state.other,tabIds:[10]}];
  await assert.rejects(state.context.activeSite(host),/cookie store/);
  assert.ok(!state.calls.some(([kind])=>['set','remove'].includes(kind)));
+});
+for(const incognito of [false,true]) {
+ test(`mixed-expiry switch skips expired cookies in ${incognito?'private':'regular'} store`,async()=>{
+  const state=setup(incognito);
+  const cookies=[cookie,{...cookie,name:'expired',expirationDate:1}];
+  const result=await state.context.doSwitch(host,'A',{[host]:{A:{cookies}}});
+  assert.equal(result.success,true);
+  assert.match(result.message,/1\/2 cookie hết hạn/);
+  assert.equal(state.calls.filter(([kind])=>kind==='set').length,1);
+  assert.equal(state.jars[state.other][0].value,'untouched');
+  assert.equal(cookies.length,2);
+ });
+}
+test('all-expired switch leaves the current session and tab untouched',async()=>{
+ const state=setup(false);
+ await assert.rejects(state.context.doSwitch(host,'A',{[host]:{A:{cookies:[{...cookie,expirationDate:1}]}}}),/Tất cả cookie/);
+ assert.deepEqual(state.calls,[]);
+ assert.equal(state.jars[state.storeId][0].value,'current');
+});
+test('matching session still reports skipped expired cookies without writes',async()=>{
+ const state=setup(true,true);
+ state.tab.url=`https://${host}/`;
+ const result=await state.context.doSwitch(host,'A',{[host]:{A:{cookies:[cookie,{...cookie,name:'expired',expirationDate:1}]}}});
+ assert.match(result.message,/1\/2 cookie hết hạn/);
+ assert.deepEqual(state.calls,[['get',state.storeId],['reload',state.tab.id]]);
 });

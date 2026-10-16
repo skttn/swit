@@ -18,6 +18,9 @@ function localizeMessage(message) {
  if(language!=='en') return message;
  if(known[message]) return known[message];
  return message
+   .replace('Tất cả cookie đã hết hạn. Chưa thay đổi phiên hiện tại; cần đăng nhập và lưu lại.', 'All cookies have expired. The current session is unchanged; sign in and save again.')
+   .replace(/Đã bỏ qua (\d+)\/(\d+) cookie hết hạn\./, 'Skipped $1/$2 expired cookies.')
+   .replace('Nếu website yêu cầu đăng nhập, hãy đăng nhập và lưu lại đúng tài khoản.', 'If the website asks you to sign in, sign in and save the correct account again.')
   .replace('Đã khôi phục ', 'Restored ')
   .replace(' cookie. Website vẫn quyết định phiên còn hiệu lực hay không.', ' cookies. The website still determines whether the session is valid.')
   .replace('Phiên hiện tại đã khớp, đã mở ', 'The current session already matches; opened ')

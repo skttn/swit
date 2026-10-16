@@ -54,6 +54,8 @@ Không bật đồng bộ của tiện ích gốc để thực hiện việc chu
 - Profile được mã hóa AES-GCM nhưng khóa nằm trong cùng vùng lưu trữ cục bộ. Không bảo vệ trước người có quyền đọc toàn bộ hồ sơ Edge.
 - Bản sao lưu JSON chứa dữ liệu mã hóa, không phải cookie dạng rõ. Giữ kín mật khẩu và chỉ nhập bản sao lưu từ nguồn tin cậy.
 - Chuyển phiên chỉ xử lý cookie, không localStorage/IndexedDB hoặc phiên phía máy chủ. Một số website cần đăng nhập lại.
+- Khi chuyển phiên, cookie đã hết hạn được bỏ qua và thông báo số lượng; cookie còn hạn và cookie phiên không có ngày hết hạn vẫn được khôi phục. Nếu không còn cookie dùng được, tiện ích dừng trước khi thay đổi phiên hiện tại. Bản lưu gốc không bị sửa và hạn cookie không được kéo dài.
+- Bản lưu không tự cập nhật theo website. Khôi phục cookie thành công không chứng minh đăng nhập thành công; Google hoặc website có thể thu hồi phiên phía máy chủ. Khi đó cần đăng nhập lại và lưu đúng tài khoản. Để giữ các tài khoản Google độc lập ổn định hơn, nên dùng các hồ sơ trình duyệt Edge riêng biệt thay vì chỉ khôi phục cookie.
 - Logic nhóm domain và xử lý cookie kế thừa bản gốc; chưa bảo đảm mọi public suffix, cookie partitioned hoặc nhiều cookie store.
 - Không có thay đổi nào đối với bản gốc trong thư mục Edge hoặc bản sao cloud/bookmark đã tồn tại trước đây.
 

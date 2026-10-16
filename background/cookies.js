@@ -17,8 +17,10 @@ function cookieMismatch(c,actual) {
 }
 export function checkTarget(cookies) {
  if(!cookies.length) throw Error('Phiên đã lưu không có cookie. Chưa thay đổi phiên hiện tại.');
- const expired=cookies.filter(c=>c.expirationDate!==undefined && c.expirationDate<=Date.now()/1000).length;
- if(expired) throw Error(`Phiên đã lưu có ${expired}/${cookies.length} cookie hết hạn. Chưa thay đổi phiên hiện tại; cần lưu lại khi đang đăng nhập.`);
+ const now=Date.now()/1000;
+ const usable=cookies.filter(c=>c.expirationDate===undefined || c.expirationDate>now);
+ if(!usable.length) throw Error('Tất cả cookie đã hết hạn. Chưa thay đổi phiên hiện tại; cần đăng nhập và lưu lại.');
+ return usable;
 }
 export async function clear(cookies,storeId) {
  for(const c of cookies) {

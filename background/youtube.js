@@ -107,7 +107,10 @@ function isYoutubeTab(tab,studio=false) {
 export async function prepareYoutubeTab(studio=false) {
  let [tab]=await chrome.tabs.query({active:true,currentWindow:true});
  if(!tab) throw Error('Không có tab phù hợp để chuyển tài khoản.');
- if(!isYoutubeTab(tab,studio)) tab=await chrome.tabs.update(tab.id,{url:studio?'https://studio.youtube.com/':'https://www.youtube.com/'});
+  if(!isYoutubeTab(tab,studio)) {
+   const url=studio?'https://studio.youtube.com/':'https://www.youtube.com/';
+   tab=await chrome.tabs.update(tab.id,{url});
+  }
  const deadline=Date.now()+20000;
  while(Date.now()<deadline) {
   try {tab=await chrome.tabs.get(tab.id);} catch {throw Error('Tab YouTube đã bị đóng. Hãy thử lại.');}

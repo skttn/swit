@@ -11,16 +11,26 @@ chrome.commands.onCommand.addListener(command=>{
 });
 async function activeSite(host,requireMatchingSite=true) {
  validHost(host);
- const [tab]=await chrome.tabs.query({active:true,currentWindow:true});
- if(!tab) throw Error('Không có tab phù hợp.');
- const url=tab.url?new URL(tab.url):null;
+  const [tab]=await chrome.tabs.query({active:true,currentWindow:true});
+  if(!tab) throw Error('Không có tab phù hợp.');
+  const url=tab.url?new URL(tab.url):null;
  const matches=!!url && ['http:','https:'].includes(url.protocol) && url.hostname===host;
  if(requireMatchingSite && !matches) throw Error('Hãy mở đúng website trước khi thao tác.');
  if(!await chrome.permissions.contains({origins:[`http://${host}/*`,`https://${host}/*`]})) throw Error('Cần cấp quyền truy cập website trước khi thao tác.');
  const stores=await chrome.cookies.getAllCookieStores();
- const store=stores.find(s=>s.tabIds.includes(tab.id));
+  const store=stores.find(s=>s.tabIds.includes(tab.id));
  if(!store) throw Error('Không xác định được cookie store.');
- return {tab:url && ['http:','https:'].includes(url.protocol)?tab:null,storeId:store.id};
+  return {tab,windowId:tab.windowId,storeId:store.id};
+}
+async function openTargetTab(active,domain) {
+  let url=null; try { if(active?.url) url=new URL(active.url); } catch {}
+  const target=`https://${domain}/`;
+  if(url?.protocol==='https:' && url.hostname===domain && url.pathname==='/' && !url.search && !url.hash) {
+   await chrome.tabs.reload(active.id);
+  } else {
+   await chrome.tabs.update(active.id,{url:target});
+  }
+  return active;
 }
 async function currentCookies(host,storeId) {
   const parts=host.split('.');
@@ -49,19 +59,17 @@ async function doSwitch(domain,name,profiles) {
    const tab=await prepareYoutubeTab();
    return clickYoutubeAccount(tab.id,handle);
   }
-  const target=validateCookies(profiles[domain][name].cookies,domain);
- checkTarget(target);
- const {tab:active,storeId}=await activeSite(domain,false);
+ const saved=validateCookies(profiles[domain][name].cookies,domain);
+ const target=checkTarget(saved);
+ const skipped=saved.length-target.length;
+ const warning=skipped?` Đã bỏ qua ${skipped}/${saved.length} cookie hết hạn. Nếu website yêu cầu đăng nhập, hãy đăng nhập và lưu lại đúng tài khoản.`:'';
+  const {tab:active,windowId,storeId}=await activeSite(domain,false);
  const current=await currentCookies(domain,storeId);
  const norm = d => d.replace(/^\./,'');
  const same=current.length===target.length && target.every(t=>current.some(c=>c.name===t.name && c.value===t.value && norm(c.domain)===norm(t.domain) && c.path===t.path));
  if(same){
-  if(active){
-   let h=''; try{ if(active.url) h=new URL(active.url).hostname; }catch{}
-   if(h===domain) await chrome.tabs.reload(active.id);
-   else await chrome.tabs.update(active.id,{url:`https://${domain}/`});
-  }
-  return {success:true,message:'Phiên hiện tại đã khớp, đã mở '+domain+'.'};
+   await openTargetTab(active,domain);
+   return {success:true,message:'Phiên hiện tại đã khớp, đã mở '+domain+'.'+warning};
  }
  try {await clear(current,storeId); await restore(target,storeId);}
  catch(error) {
@@ -69,13 +77,8 @@ async function doSwitch(domain,name,profiles) {
   catch {throw Error(`${error.message} Khôi phục phiên trước cũng thất bại. Có thể cần đăng nhập lại.`);}
   throw Error(`${error.message} Đã ghi lại và kiểm tra cookie của phiên trước.`);
  }
- if(active) {
-  let host='';
-  try { if(active.url) host=new URL(active.url).hostname; } catch {}
-  if(host===domain) await chrome.tabs.reload(active.id);
-  else await chrome.tabs.update(active.id,{url:`https://${domain}/`});
- }
- return {success:true,message:`Đã khôi phục ${target.length} cookie. Website vẫn quyết định phiên còn hiệu lực hay không.`};
+  await openTargetTab(active,domain);
+  return {success:true,message:`Đã khôi phục ${target.length} cookie. Website vẫn quyết định phiên còn hiệu lực hay không.`+warning};
 }
 async function handle(message) {
  await ready;

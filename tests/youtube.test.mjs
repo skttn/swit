@@ -14,15 +14,17 @@ test('tab preparation uses the active YouTube tab without navigation',async()=>{
 test('tab preparation navigates the current tab instead of finding or creating another tab',async()=>{
  const loaded={id:3,url:'https://www.youtube.com/',status:'complete'};
  const calls=[];
- for(const url of ['https://studio.youtube.com/','https://youtube.com.example.org/','chrome://newtab/']) {
+  for(const url of ['https://studio.youtube.com/','https://youtube.com.example.org/','chrome://newtab/']) {
   let reads=0;
-  globalThis.chrome={tabs:{query:async options=>{assert.deepEqual(options,{active:true,currentWindow:true});return [{id:3,url,active:true}];},
+    globalThis.chrome={tabs:{query:async options=>{assert.deepEqual(options,{active:true,currentWindow:true});return [{id:3,url,active:true}];},
    update:async(id,options)=>{calls.push([id,options]);return {...loaded,url};},
+   create:async options=>{calls.push(['create',options]);return {...loaded,id:4,...options};},
+   remove:async id=>calls.push(['remove',id]),
    get:async()=>++reads===1?{...loaded,url,pendingUrl:'https://www.youtube.com/'}:loaded}};
   assert.equal((await prepareYoutubeTab()).id,3);
   assert.equal(reads,2);
  }
- assert.deepEqual(calls,Array.from({length:3},()=>[3,{url:'https://www.youtube.com/'}]));
+  assert.deepEqual(calls,Array.from({length:3},()=>[3,{url:'https://www.youtube.com/'}]));
 });
 test('tab preparation waits for load, supports incognito and rejects closed or redirected tabs',async()=>{
  const tab={id:2,url:'https://www.youtube.com/',status:'complete',active:true};
