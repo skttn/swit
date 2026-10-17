@@ -16,6 +16,11 @@ function cookieMatchesScope(cookieDomain,host) {
  const scope=cookieScope(host);
  return typeof domain==='string' && (domain===scope || domain.endsWith('.'+scope));
 }
+export function validTargetUrl(value,host) {
+ const url=new URL(value);
+ if(!['http:','https:'].includes(url.protocol) || url.hostname!==host || url.username || url.password) throw Error('URL đích không hợp lệ.');
+ return url.href;
+}
 export function validateCookies(cookies,host) {
  validHost(host);
  if(!Array.isArray(cookies) || cookies.length>1000) throw Error('Danh sách cookie không hợp lệ.');
@@ -54,7 +59,8 @@ export function validateProfiles(data) {
     if(hasId) youtubeChannel.channelId=channelId;
    }
     const profile={name,domain:host,cookies:validateCookies(p.cookies,host),isFavorite:p.isFavorite===true,timestamp:Number.isFinite(p.timestamp)?p.timestamp:null};
-   if(youtubeChannel) {
+    if(p.targetUrl!==undefined) profile.targetUrl=validTargetUrl(p.targetUrl,host);
+    if(youtubeChannel) {
     const cookieDomain=cookieScope(host);
     if(cookieDomain==='google.com' || host==='youtube.com' || host.endsWith('.youtube.com') || host.endsWith('.google.com'))
      profile.youtubeChannel=youtubeChannel;

@@ -74,6 +74,19 @@ test('clear detects removal rejection and cookies left behind',async()=>{
  chrome.cookies.remove=async()=>{throw Error(cookie.value);};
  await assert.rejects(clear([cookie],'0'),error=>!error.message.includes(cookie.value));
 });
+test('clear retries remaining cookies without changing removal scope',async()=>{
+ const state=mock(); state.jar=[cookie];
+ const calls=[];
+ chrome.cookies.remove=async options=>{
+  calls.push(options);
+  if(calls.length===2) state.jar=[];
+  return null;
+ };
+ await clear([cookie],'private');
+ assert.equal(calls.length,2);
+ assert.deepEqual(calls[0],calls[1]);
+ assert.equal(calls[0].storeId,'private');
+});
 test('empty and expired targets are rejected before mutation',()=>{
  mock();
  assert.throws(()=>checkTarget([]),/không có cookie/);

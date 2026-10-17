@@ -23,13 +23,18 @@ export function checkTarget(cookies) {
  return usable;
 }
 export async function clear(cookies,storeId) {
- for(const c of cookies) {
+ let pending=cookies;
+ for(let attempt=0;attempt<3;attempt++) {
+ for(const c of pending) {
   try { await chrome.cookies.remove({url:cookieUrl(c),name:c.name,storeId}); }
   catch { throw cookieError('Không xóa được',c); }
  }
  const remaining=await chrome.cookies.getAll({storeId});
- const failed=cookies.find(c=>remaining.some(actual=>!actual.partitionKey && sameCookie(c,actual)));
- if(failed) throw cookieError('Cookie vẫn còn sau khi xóa',failed);
+ pending=cookies.filter(c=>remaining.some(actual=>!actual.partitionKey && sameCookie(c,actual)));
+ if(!pending.length) return;
+ if(attempt<2) await new Promise(resolve=>setTimeout(resolve,100));
+ }
+ throw cookieError('Cookie vẫn còn sau khi xóa; hãy đóng các tab cùng website khác rồi thử lại',pending[0]);
 }
 export async function restore(cookies,storeId) {
  for(const c of cookies) {

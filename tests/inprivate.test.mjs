@@ -29,7 +29,8 @@ function setup(incognito,same=false) {
   }
  };
  globalThis.chrome=chrome;
- const context=vm.createContext({chrome,URL,...validation,...cookieModule});
+ chrome.tabs.get=async id=>({id,url:'about:blank',status:'complete'});
+ const context=vm.createContext({chrome,URL,setTimeout,...validation,...cookieModule});
  vm.runInContext(source.replace(/^import .*;\r?\n/gm,''),context);
  return {context,chrome,jars,storeId,other,tab,calls};
 }
@@ -44,7 +45,7 @@ for(const incognito of [false,true]) {
   assert.equal(result.success,true);
   assert.equal(state.jars[state.storeId][0].value,'saved');
   assert.equal(state.jars[state.other][0].value,'untouched');
-  assert.ok(state.calls.slice(0,-1).every(([,id])=>id===state.storeId));
+  assert.ok(state.calls.filter(([kind])=>['get','set','remove'].includes(kind)).every(([,id])=>id===state.storeId));
   assert.equal(state.calls.at(-1)[0],'update');
   assert.equal(state.calls.at(-1)[1],state.tab.id);
   assert.equal(state.calls.at(-1)[2].url,`https://${host}/`);
@@ -113,4 +114,48 @@ test('matching session still reports skipped expired cookies without writes',asy
  const result=await state.context.doSwitch(host,'A',{[host]:{A:{cookies:[cookie,{...cookie,name:'expired',expirationDate:1}]}}});
  assert.match(result.message,/1\/2 cookie hết hạn/);
  assert.deepEqual(state.calls,[['get',state.storeId],['reload',state.tab.id]]);
+});
+for(const incognito of [false,true]) {
+ test(`SSO switches the original tab through blank to saved URL (private=${incognito})`,async()=>{
+  const state=setup(incognito);
+  state.tab.url='https://user.vnedu.vn/sso/?app_id=3&continue=http%3A%2F%2Fother.vnedu.vn';
+  const targetUrl=`https://${host}/v5/`;
+  await state.context.doSwitch(host,'A',{[host]:{A:{cookies:[cookie],targetUrl}}});
+  const navigation=state.calls.filter(([kind])=>kind==='update');
+  assert.equal(navigation.length,2);
+  assert.equal(navigation[0][2].url,'about:blank');
+  assert.equal(navigation[1][2].url,targetUrl);
+  assert.ok(navigation.every(([,id])=>id===state.tab.id));
+  assert.ok(state.calls.findIndex(([kind])=>kind==='remove')>state.calls.findIndex(([kind])=>kind==='update'));
+  assert.ok(!state.calls.some(([kind])=>kind==='create'));
+ });
+}
+test('failed intermediate navigation leaves cookies unchanged',async()=>{
+ const state=setup(false);
+ state.chrome.tabs.update=async()=>{throw Error('blocked');};
+ await assert.rejects(state.context.doSwitch(host,'A',{[host]:{A:{cookies:[cookie]}}}),/blocked/);
+ assert.equal(state.jars[state.storeId][0].value,'current');
+ assert.ok(!state.calls.some(([kind])=>['remove','set'].includes(kind)));
+});
+test('failed restore rolls back cookies and returns to previous website',async()=>{
+ const state=setup(false);
+ const set=state.chrome.cookies.set;
+ state.chrome.cookies.set=async item=>item.value==='saved'?null:set(item);
+ await assert.rejects(state.context.doSwitch(host,'A',{[host]:{A:{cookies:[cookie]}}}),/Đã ghi lại/);
+ assert.equal(state.jars[state.storeId][0].value,'current');
+ assert.equal(state.calls.at(-1)[2].url,state.tab.url);
+});
+test('save retains the current URL and validation preserves it across storage',async()=>{
+ const state=setup(false);
+ let saved;
+ state.context.loadProfiles=async()=>({});
+ state.context.saveProfiles=async profiles=>{saved=validation.validateProfiles(profiles);};
+ await state.context.handle({action:'saveProfile',domain:host,name:'A'});
+ assert.equal(saved[host].A.targetUrl,`https://${host}/v5/`);
+});
+test('destination validation rejects foreign hosts, credentials and non-web schemes',()=>{
+ for(const targetUrl of ['https://other.vnedu.vn/','javascript:alert(1)',`https://user:pass@${host}/`]) {
+  assert.throws(()=>validation.validTargetUrl(targetUrl,host));
+ }
+ assert.equal(validation.validTargetUrl(`https://${host}/v5/`,host),`https://${host}/v5/`);
 });
